@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.sun.spring.pojo.Student" id="studentOne">
+
+
+    </bean>
+
+    <!--  Set 注入  -->
+    <bean class="com.sun.spring.pojo.Student" id="studentTwo">
+        <property name="ino" value="001"></property>
+        <property name="sname" value="Sunjiabao"></property>
+        <property name="gender" value="Male"></property>
+        <property name="age" value="25"></property>
+    </bean>
+    <!--  构造器 注入  -->
+    <bean class="com.sun.spring.pojo.Student" id="studentThree">
+        <constructor-arg name="ino" value="002"></constructor-arg>
+        <constructor-arg name="sname" value="Sunjiabao"></constructor-arg>
+        <constructor-arg name="gender" value="Male"></constructor-arg>
+        <constructor-arg name="age" value="25"></constructor-arg>
+
+    </bean>
+
+    <!-- 类 类型 -->
+    <bean class="com.sun.spring.pojo.Student" id="studentFour">
+        <property name="ino" value="003"></property>
+        <property name="sname" value="Sunjiabao"></property>
+        <property name="gender" value="Male"></property>
+        <property name="age" value="25"></property>
+        <property name="clazz" ref="clazzOne"></property>
+    </bean>
+
+    <bean class="com.sun.spring.pojo.Clazz" id="clazzOne">
+        <property name="cid" value="10001"></property>
+        <property name="cname" value="C1"></property>
+    </bean>
+
+    <bean class="com.sun.spring.pojo.Student" id="studentFive">
+        <property name="ino" value="003"></property>
+        <property name="sname" value="Sunjiabao"></property>
+        <property name="gender" value="Male"></property>
+        <property name="age" value="25"></property>
+        <property name="clazz">
+            <bean class="com.sun.spring.pojo.Clazz" id="clazzInner">
+                <property name="cid" value="10003"></property>
+                <property name="cname" value="C2"></property>
+            </bean>
+        </property>
+    </bean>
+</beans>
